@@ -3,6 +3,6 @@
 , yarn ? pkgs.yarn
 }:
 
-{
-  pkgs = with pkgs; [ nodejs yarn ];
-}
+with pkgs;
+
+[ nodejs yarn ]

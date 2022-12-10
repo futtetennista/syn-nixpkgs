@@ -7,7 +7,6 @@ let
   sources = import ../sources.nix;
   nixpkgs = sources.nixpkgs;
 
-  # https://nixos.wiki/wiki/Overlays
   overlay = _final: prev: rec {
     vendored = {
       postgresql = prev.callPackage ./vendor/postgresql {
@@ -21,8 +20,21 @@ let
 
     nodejs = prev.nodejs-16_x;
 
-    # https://nixos.org/manual/nixpkgs/stable/#sec-pkg-overrideAttrs
     yarn = prev.yarn.override { inherit nodejs; };
+
+    python = prev.python39;
+
+    go = prev.go;
+  };
+
+  pkgs = import nixpkgs (args // { overlays = [ overlay ] ++ overlays; });
+
+  syn-pkgs = {
+    syn-core-tools = pkgs.callPackage ./collections/core {};
+    syn-node-tools = pkgs.callPackage ./collections/node {};
+    syn-python-tools = pkgs.callPackage ./collections/python {};
+    syn-go-tools = pkgs.callPackage ./collections/go {};
+    syn-infra-tools = pkgs.callPackage ./collections/infra {};
   };
 in
-  import nixpkgs (args // { overlays = [ overlay ] ++ overlays; })
+  pkgs // syn-pkgs

@@ -21,6 +21,4 @@ let
     vendored.postgresql
   ];
 in
-  {
-    pkgs = core ++ cloud ++ containers ++ vendor;
-  }
+  core ++ cloud ++ containers ++ vendor
