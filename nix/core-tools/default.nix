@@ -14,7 +14,7 @@ let
     jq
     parallel
     yq-go
-  ] ++ (if python_x then [python_x] else []);
+  ] ++ (if python == null then [] else [python]);
   
   cloud = [
     kubectl
