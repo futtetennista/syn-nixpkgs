@@ -12,8 +12,8 @@ in
 
     hooks = {
       # shellcheck.enable = true;
-      nix-linter.enable = true;
-      nixpkgs-fmt.enable = true;
+      nix-linter.enable = false;
+      nixpkgs-fmt.enable = false;
     };
   };
 }
