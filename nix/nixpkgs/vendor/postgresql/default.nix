@@ -1,4 +1,6 @@
-{ pkgs, postgresql }:
+{ pkgs
+, postgresql
+}:
 
 let
   psqlrc = pkgs.writeText "psqlrc" ''
@@ -41,15 +43,15 @@ let
     \i ~/.psqlrc
   '';
 in
-pkgs.stdenv.mkDerivation {
-  name = "postgresql";
-  buildInputs = [ pkgs.makeWrapper postgresql ];
-  phases = [ "fixupPhase" ];
-  postFixup = ''
-    mkdir -p $out/bin
-    cp -r ${postgresql}/bin/* $out/bin
-    mv $out/bin/psql $out/bin/psql_vanilla
-    makeWrapper $out/bin/psql_vanilla $out/bin/psql --set-default PSQLRC ${psqlrc}
-  '';
-}
+  pkgs.stdenv.mkDerivation {
+    name = "postgresql";
+    buildInputs = [ pkgs.makeWrapper postgresql ];
+    phases = [ "fixupPhase" ];
+    postFixup = ''
+      mkdir -p $out/bin
+      cp -r ${postgresql}/bin/* $out/bin
+      mv $out/bin/psql $out/bin/psql_vanilla
+      makeWrapper $out/bin/psql_vanilla $out/bin/psql --set-default PSQLRC ${psqlrc}
+    '';
+  }
 
