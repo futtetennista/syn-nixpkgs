@@ -1,0 +1,16 @@
+{
+    "nixpkgs": {
+        "branch": "unstable",
+        "description": "Nix Packages collection",
+        "comment_unstable_channel": "The unstable channel is needed to install components in gcloud sdk",
+        "homepage": "https://nixos.org/",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0533be43f1ce89c51ce9720386258ea5c19fcb1d",
+        "sha256": "sha256:1vpny73rzh3bpx2alrbafyai67rzin1aap47gxd4iic2chmpmaw9",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/0533be43f1ce89c51ce9720386258ea5c19fcb1d.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}
+
