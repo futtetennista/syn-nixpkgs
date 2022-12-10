@@ -1,7 +1,8 @@
 { pkgs
-, gcloud_sdk ? false
-, azure_cli ? false
-, drone_cli ? false
+, gcloud_sdk ? true
+, azure_cli ? true
+, drone_cli ? true
+, python ? pkgs.python39
 }:
 
 with pkgs;
@@ -11,21 +12,22 @@ let
     git
     gh
     jq
-    # parallel
-    # python39
+    parallel
     yq-go
-  ];
+  ] ++ (if python_x then [python_x] else []);
+  
   cloud = [
     kubectl
-    ]
-    ++ (if drone_cli then [ drone-cli ] else [])
-    ++ (if gcloud_sdk then [ gcloud-sdk ] else [])
-    ++ (if azure_cli then [ azure-cli ] else []);
-  container = [ lima colima docker ];
+  ] ++ (if drone_cli then [ drone-cli ] else [])
+  ++ (if gcloud_sdk then [ gcloud-sdk ] else [])
+  ++ (if azure_cli then [ azure-cli ] else []);
+  
+  containers = [ lima colima docker ];
+  
   vendor = [
     vendored.postgresql
   ];
 in
   {
-    buildInputs = core ++ cloud ++ container ++ vendor;
+    buildInputs = core ++ cloud ++ containers ++ vendor;
   }
