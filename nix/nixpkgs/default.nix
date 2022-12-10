@@ -18,5 +18,7 @@ let
     yarn = prev.yarn.overrideAttrs (_final: { buildInputs = [ nodejs ]; });
   };
 in
-  { overlays ? [ ], ... }@args:
-  import nixpkgs (args // { overlays = [ overlay ] ++ overlays; })
+  { overlays ? [ ]
+  , ...
+  }@args:
+    import nixpkgs (args // { overlays = [ overlay ] ++ overlays; })
