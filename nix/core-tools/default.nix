@@ -15,15 +15,15 @@ let
     parallel
     yq-go
   ] ++ (if python == null then [] else [python]);
-  
+
   cloud = [
     kubectl
   ] ++ (if drone_cli then [ drone-cli ] else [])
   ++ (if gcloud_sdk then [ gcloud-sdk ] else [])
   ++ (if azure_cli then [ azure-cli ] else []);
-  
+
   containers = [ lima colima docker ];
-  
+
   vendor = [
     vendored.postgresql
   ];

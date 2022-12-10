@@ -1,3 +1,4 @@
+# This file is the source of truth when it comes to versioning packages
 let
   sources = import ../sources.nix;
   nixpkgs = sources.nixpkgs;
