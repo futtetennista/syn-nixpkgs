@@ -1,8 +1,11 @@
-name: "Push to synthxacxe"
+name: "Build cache"
 on: [pull_request, push]
 jobs:
   build:
-    runs-on: macos-latest
+    strategy:
+      matrix:
+        os: [macos-latest, macos-10.15]
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
     - uses: cachix/install-nix-action@v18
@@ -11,6 +14,6 @@ jobs:
     - uses: cachix/cachix-action@v12
       with:
         name: synthxacxe
-        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+        authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
     - run: nix-build shell.nix
     - run: nix-shell --run "echo OK"

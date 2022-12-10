@@ -15,7 +15,7 @@ let
     };
   };
 
-  core-tools = callPackage ./nix/core-tools { };
+  core-tools = callPackage ./nix/core-tools { gcloud_sdk = false; azure_cli = false; };
 in
   mkShell {
     buildInputs = core-tools.buildInputs;
