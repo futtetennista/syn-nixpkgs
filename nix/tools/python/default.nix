@@ -3,5 +3,5 @@
 }:
 
 {
-  buildInputs = with pkgs; [ python ];
+  pkgs = with pkgs; [ python ];
 }

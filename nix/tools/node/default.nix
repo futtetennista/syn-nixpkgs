@@ -4,5 +4,5 @@
 }:
 
 {
-  buildInputs = with pkgs; [ nodejs yarn ];
+  pkgs = with pkgs; [ nodejs yarn ];
 }

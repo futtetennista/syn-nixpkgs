@@ -12,5 +12,5 @@ let
   ++ (if azure_cli then [ azure-cli ] else []);
 in
   {
-    buildInputs = cloud-tools;
+    pkgs = cloud-tools;
   }

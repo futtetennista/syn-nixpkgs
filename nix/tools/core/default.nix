@@ -22,5 +22,5 @@ let
   ];
 in
   {
-    buildInputs = core ++ cloud ++ containers ++ vendor;
+    pkgs = core ++ cloud ++ containers ++ vendor;
   }
