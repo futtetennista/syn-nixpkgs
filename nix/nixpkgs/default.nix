@@ -22,7 +22,7 @@ let
     nodejs = prev.nodejs-16_x;
 
     # https://nixos.org/manual/nixpkgs/stable/#sec-pkg-overrideAttrs
-    yarn = prev.yarn.overrideAttrs (_final: { buildInputs = [ nodejs ]; });
+    yarn = prev.yarn.override { inherit nodejs; };
   };
 in
   import nixpkgs (args // { overlays = [ overlay ] ++ overlays; })

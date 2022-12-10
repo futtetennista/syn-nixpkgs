@@ -15,5 +15,5 @@ jobs:
       with:
         name: synthxacxe
         authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-    - run: nix-build shell.nix
+    - run: nix-build ./nix/all-tools.nix
     - run: nix-shell --run "echo OK"
