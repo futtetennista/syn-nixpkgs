@@ -29,12 +29,12 @@ let
 
   pkgs = import nixpkgs (args // { overlays = [ overlay ] ++ overlays; });
 
-  syn-pkgs = {
-    syn-core-tools = pkgs.callPackage ./collections/core {};
-    syn-node-tools = pkgs.callPackage ./collections/node {};
-    syn-python-tools = pkgs.callPackage ./collections/python {};
-    syn-go-tools = pkgs.callPackage ./collections/go {};
-    syn-infra-tools = pkgs.callPackage ./collections/infra {};
+  pkgs-syn = {
+    core-tools = pkgs.callPackage ./core {};
+    node-tools = pkgs.callPackage ./node {};
+    python-tools = pkgs.callPackage ./python {};
+    go-tools = pkgs.callPackage ./go {};
+    cloud-tools = pkgs.callPackage ./cloud {};
   };
 in
-  pkgs // syn-pkgs
+  pkgs // pkgs-syn

@@ -5,10 +5,10 @@ with pkgs;
 
 mkShell {
   buildInputs = [
-    syn-core-tools
-    syn-node-tools
-    syn-python-tools
-    syn-go-tools
-    syn-infra-tools
+    core-tools
+    node-tools
+    python-tools
+    go-tools
+    cloud-tools
   ];
 }
