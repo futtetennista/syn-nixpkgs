@@ -15,7 +15,7 @@ let
 
   cloud = if gcloud_sdk then [ gcloud-sdk ] else [];
 
-  containers = [ lima colima docker ];
+  containers = [ lima colima docker docker-compose ];
 
   vendor = [
     vendored.postgresql
