@@ -5,6 +5,6 @@
 
 with pkgs;
 
-[ kubectl ]
+[ kubectl kubectx ]
 ++ (if drone_cli then [ drone-cli ] else [])
 ++ (if azure_cli then [ azure-cli ] else [])
